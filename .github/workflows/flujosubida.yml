@@ -47,10 +47,10 @@ jobs:
           user: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
         run: |
-          echo "user: ${{ secrets.USER }}
-          echo "password: ${{ secrets.PASSWORD }}
+          echo "user: ${{ secrets.USER }}"
+          echo "password: ${{ secrets.PASSWORD }}"
 
       # Step 4: variables abiertas
       - name: variables abiertas
         run: |
-          echo "Versión del proyecto: $version_proyecto"
+          echo "Versión del proyecto: ${{ vars.VERSIONDEMIPROYECTO }}"
