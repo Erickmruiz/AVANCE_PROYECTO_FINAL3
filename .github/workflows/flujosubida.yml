@@ -47,8 +47,8 @@ jobs:
           user: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
         run: |
-          echo "user: $user"
-          echo "password: $password"
+          echo "user: ${{ secrets.USER }}
+          echo "password: ${{ secrets.PASSWORD }}
 
       # Step 4: variables abiertas
       - name: variables abiertas
