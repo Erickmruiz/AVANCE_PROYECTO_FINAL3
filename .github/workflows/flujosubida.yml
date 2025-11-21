@@ -1,34 +1,56 @@
-# This is a basic workflow to help you get started with Actions
+# Este es un flujo de trabajo basado en la plantilla enviada
+# pero adaptado a todos los requerimientos solicitados
 
-name: CI
+name: Integración y entrega continua
 
-# Controls when the workflow will run
+# Controla cuándo se ejecuta el flujo
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Debe activarse cuando haya un push en la rama main
   push:
     branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Permite ejecutarlo manualmente desde Actions
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Un flujo de trabajo contiene uno o más jobs
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  unico-job:
+    # Tipo de sistema operativo
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # Variables de entorno solicitadas
+    env:
+      nombres: "Erick Manuel"
+      apellidos: "Ruiz Guerra"
+      edad: "21"
+      version_proyecto: "3.0"
+
+    # Secuencia de steps
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Necesario para que el repositorio sea accesible
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Step 1: presentación
+      - name: presentación
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "Nombres: $nombres"
+          echo "Apellidos: $apellidos"
+          echo "Edad: $edad"
+
+      # Step 2: datos generales
+      - name: datos generales
+        run: echo "carrera de ingeniería de sistemas"
+
+      # Step 3: variables secretas
+      - name: variables de entorno secretas
+        env:
+          user: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+        run: |
+          echo "user: $user"
+          echo "password: $password"
+
+      # Step 4: variables abiertas
+      - name: variables abiertas
+        run: |
+          echo "Versión del proyecto: $version_proyecto"
